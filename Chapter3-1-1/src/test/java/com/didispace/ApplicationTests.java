@@ -3,6 +3,9 @@ package com.didispace;
 import com.didispace.domain.User;
 import com.didispace.web.HelloController;
 import com.didispace.web.UserController;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -100,5 +103,17 @@ public class ApplicationTests {
 				.andExpect(content().string(equalTo("[]")));
 
 	}
-
+	
+	@Test
+	public void testUser() throws JsonProcessingException{
+		long id = 1;
+		User user = new User();
+		user.setAge(20);
+		user.setId(id);
+		user.setName("tom");
+		
+		ObjectMapper format = new ObjectMapper();
+		String json = format.writeValueAsString(user);
+		System.out.println(json);
+	}
 }

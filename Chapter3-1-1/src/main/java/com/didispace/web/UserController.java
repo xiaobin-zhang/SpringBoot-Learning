@@ -24,6 +24,7 @@ public class UserController {
         // 处理"/users/"的GET请求，用来获取用户列表
         // 还可以通过@RequestParam从页面中传递参数来进行查询条件或者翻页信息的传递
         List<User> r = new ArrayList<User>(users.values());
+        System.out.println("get: " + r.toString());
         return r;
     }
 
@@ -32,6 +33,7 @@ public class UserController {
         // 处理"/users/"的POST请求，用来创建User
         // 除了@ModelAttribute绑定参数之外，还可以通过@RequestParam从页面中传递参数
         users.put(user.getId(), user);
+        System.out.println("post: " + user.toString());
         return "success";
     }
 
