@@ -26,5 +26,14 @@ public class HelloController {
         map.addAttribute("host", "http://blog.didispace.com");
         return "index";
     }
-
+    
+    @RequestMapping("/error_handler")
+    public String error() throws Exception{
+    	throw new Exception("发生错误");
+    }
+    
+    @RequestMapping("/jsonerror_handler")
+    public String jsonerror() throws Exception{
+    	throw new MyException("发生错误");
+    }
 }
